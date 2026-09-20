@@ -1,170 +1,68 @@
-import {
-  BarChart3,
-  CheckCircle2,
-  ClipboardList,
-  Droplets,
-  Lightbulb,
-  MapPinned,
-  ShieldCheck,
-  Trash2,
-  Wrench
-} from "lucide-react";
+import { BarChart3, CheckCircle2, ClipboardList, Droplets, Lightbulb, MapPinned, ShieldCheck, Trash2, Wrench, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const services = [
-  ["Road Repairs", Wrench, "Report potholes, damaged dividers, and unsafe road surfaces."],
+  ["Road Repairs", Wrench, "Report potholes, damaged dividers and unsafe road surfaces."],
   ["Street Lighting", Lightbulb, "Raise requests for broken or low-visibility street lights."],
-  ["Water Supply", Droplets, "Escalate water leakage, shortage, and pipeline complaints."],
-  ["Sanitation", Trash2, "Track garbage collection, public hygiene, and waste issues."]
+  ["Water Supply", Droplets, "Report leakage, shortage and pipeline-related issues."],
+  ["Sanitation", Trash2, "Track garbage collection, hygiene and waste concerns."]
 ];
+const categories = ["Road Damage","Street Light","Water Supply","Garbage Collection","Drainage","Traffic","Pollution","Public Toilet"];
 
-const categories = ["Road Damage", "Street Light", "Water Supply", "Garbage Collection", "Drainage", "Traffic", "Pollution", "Public Toilet"];
-
-const Home = () => {
+export default function Home() {
   return (
-    <>
-      <section className="public-hero">
-        <div className="container">
-          <div className="row align-items-center g-5">
-            <div className="col-lg-7">
-              <span className="status-pill mb-3">Smart civic response platform</span>
-              <h1 className="display-5 fw-bold mb-3">Complaint Management and Smart City Portal</h1>
-              <p className="lead mb-4">
-                A responsive MERN platform for citizens to report issues, officers to resolve work, and administrators to monitor city operations.
-              </p>
-              <div className="d-flex flex-wrap gap-3">
-                <Link className="btn btn-primary btn-lg" to="/complaints/new">
-                  Submit Complaint
-                </Link>
-                <Link className="btn btn-outline-light btn-lg" to="/track">
-                  Track Status
-                </Link>
-              </div>
+    <main className="home-premium">
+      <section className="home-hero">
+        <div className="home-hero-grid">
+          <div className="home-hero-copy">
+            <div className="home-eyebrow"><span /> SMART CIVIC PLATFORM</div>
+            <h1>Make your city<br /><em>better, together.</em></h1>
+            <p className="home-hero-text">Report civic problems, follow every update and help create a cleaner, safer and more responsive community.</p>
+            <div className="home-actions">
+              <Link className="home-btn home-btn-primary" to="/complaints/new">Submit a complaint <ArrowUpRight size={18}/></Link>
+              <Link className="home-btn home-btn-ghost" to="/track">Track complaint</Link>
             </div>
-            <div className="col-lg-5">
-              <div className="hero-metrics bg-white">
-                <div>
-                  <MapPinned size={32} />
-                  <strong>Citywide</strong>
-                  <span>Complaint coverage</span>
-                </div>
-                <div>
-                  <ShieldCheck size={32} />
-                  <strong>Role-based</strong>
-                  <span>Admin and officer access</span>
-                </div>
-                <div>
-                  <BarChart3 size={32} />
-                  <strong>Analytics</strong>
-                  <span>Live dashboard insights</span>
-                </div>
-              </div>
+            <div className="home-proof"><ShieldCheck size={17}/><span>Transparent workflow</span><i/> <MapPinned size={17}/><span>Citywide access</span></div>
+          </div>
+          <div className="home-hero-visual">
+            <div className="home-orbit home-orbit-a" />
+            <div className="home-orbit home-orbit-b" />
+            <div className="home-glass-card home-glass-main">
+              <div className="home-card-top"><span>LIVE CIVIC DESK</span><b>● Active</b></div>
+              <div className="home-city-mark"><MapPinned size={30}/></div>
+              <strong>One portal.<br/>Every civic concern.</strong>
+              <p>From first report to final resolution.</p>
+              <div className="home-mini-stats"><span><b>24×7</b>Tracking</span><span><b>100%</b>Digital</span></div>
             </div>
+            <div className="home-float-card home-float-one"><CheckCircle2 size={20}/><div><b>Issue resolved</b><small>Complaint #SC-2048</small></div></div>
+            <div className="home-float-card home-float-two"><BarChart3 size={20}/><div><b>Smart analytics</b><small>City operations</small></div></div>
           </div>
         </div>
       </section>
 
-      <section className="py-5">
-        <div className="container">
-          <div className="section-heading">
-            <span>Smart City Services</span>
-            <h2>Designed for everyday civic issues</h2>
-          </div>
-          <div className="row g-4">
-            {services.map(([title, Icon, text]) => (
-              <div className="col-md-6 col-lg-3" key={title}>
-                <div className="public-card h-100">
-                  <Icon size={30} />
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <section className="home-section">
+        <div className="home-section-head"><span>CORE SERVICES</span><h2>Built for the issues<br/>people face every day.</h2><p>Simple reporting for citizens. Clear workflows for the teams resolving them.</p></div>
+        <div className="home-service-grid">
+          {services.map(([title, Icon, text]) => <article className="home-service-card" key={title}><div className="home-service-icon"><Icon size={22}/></div><h3>{title}</h3><p>{text}</p><Link to="/complaints/new">Report issue <ArrowUpRight size={15}/></Link></article>)}
         </div>
       </section>
 
-      <section className="public-band py-5">
-        <div className="container">
-          <div className="section-heading">
-            <span>How It Works</span>
-            <h2>From complaint to resolution</h2>
-          </div>
-          <div className="row g-4">
-            {[
-              ["1", "Submit", "Citizen files complaint with location, category, priority, and optional image proof."],
-              ["2", "Assign", "Admin reviews and assigns the complaint to a department officer."],
-              ["3", "Resolve", "Officer updates status, adds work remarks, and closes the complaint."],
-              ["4", "Feedback", "Citizen tracks progress and submits rating after resolution."]
-            ].map(([step, title, text]) => (
-              <div className="col-md-6 col-lg-3" key={step}>
-                <div className="step-card">
-                  <span>{step}</span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <section className="home-workflow">
+        <div className="home-section-head light"><span>THE WORKFLOW</span><h2>From report to resolution,<br/>nothing gets lost.</h2></div>
+        <div className="home-steps">
+          {[["01","SUBMIT","Describe the issue with location, category and optional proof."],["02","ASSIGN","The right department receives and reviews your complaint."],["03","RESOLVE","Officers update progress and add resolution remarks."],["04","FEEDBACK","Track the outcome and share your experience."]].map(([n,t,d])=><div className="home-step" key={n}><b>{n}</b><div><span>{t}</span><h3>{d}</h3></div></div>)}
         </div>
       </section>
 
-      <section className="py-5">
-        <div className="container">
-          <div className="section-heading">
-            <span>Complaint Categories</span>
-            <h2>Quick reporting for common problems</h2>
-          </div>
-          <div className="category-grid">
-            {categories.map((category) => (
-              <div className="category-pill" key={category}>
-                <CheckCircle2 size={18} />
-                {category}
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="home-section home-category-section">
+        <div className="home-section-head"><span>QUICK REPORTING</span><h2>Common problems,<br/>one place to report them.</h2></div>
+        <div className="home-category-grid">{categories.map(c=><Link to="/complaints/new" className="home-category" key={c}><CheckCircle2 size={17}/>{c}<ArrowUpRight size={15}/></Link>)}</div>
       </section>
 
-      <section className="stats-strip py-5">
-        <div className="container">
-          <div className="row g-4 text-center">
-            <div className="col-6 col-lg-3">
-              <strong>24x7</strong>
-              <span>Complaint tracking</span>
-            </div>
-            <div className="col-6 col-lg-3">
-              <strong>5</strong>
-              <span>Status stages</span>
-            </div>
-            <div className="col-6 col-lg-3">
-              <strong>3</strong>
-              <span>User roles</span>
-            </div>
-            <div className="col-6 col-lg-3">
-              <strong>100%</strong>
-              <span>Digital workflow</span>
-            </div>
-          </div>
-        </div>
+      <section className="home-final">
+        <div><ClipboardList size={28}/><span>READY TO GET STARTED?</span><h2>Your next civic report<br/>can start here.</h2></div>
+        <Link className="home-btn home-btn-light" to="/complaints/new">Create a complaint <ArrowUpRight size={18}/></Link>
       </section>
-
-      <section className="py-5">
-        <div className="container">
-          <div className="cta-panel">
-            <ClipboardList size={40} />
-            <div>
-              <h2 className="h3 fw-semibold">Ready to report a city issue?</h2>
-              <p className="mb-0">Create a complaint and receive a tracking ID instantly.</p>
-            </div>
-            <Link className="btn btn-light" to="/complaints/new">
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   );
-};
-
-export default Home;
+}
