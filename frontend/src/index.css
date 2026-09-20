@@ -1,19 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
 
 :root {
-  --sc-primary: #2563eb;
-  --sc-primary-dark: #1d4ed8;
-  --sc-cyan: #06b6d4;
-  --sc-ink: #0b1220;
-  --sc-muted: #64748b;
-  --sc-bg: #f5f7fb;
-  --sc-surface: rgba(255, 255, 255, 0.92);
-  --sc-border: rgba(148, 163, 184, 0.22);
-  --sc-shadow: 0 18px 55px rgba(15, 23, 42, 0.09);
-  --sc-shadow-hover: 0 24px 70px rgba(15, 23, 42, 0.14);
+  --sc-primary: #2f6654;
+  --sc-primary-dark: #234d40;
+  --sc-cyan: #8aa895;
+  --sc-ink: #26322d;
+  --sc-muted: #6d766f;
+  --sc-bg: #f5efe3;
+  --sc-surface: rgba(255, 251, 243, 0.9);
+  --sc-border: rgba(91, 79, 60, 0.15);
+  --sc-shadow: 0 18px 55px rgba(68, 57, 39, 0.09);
+  --sc-shadow-hover: 0 26px 70px rgba(68, 57, 39, 0.14);
+  --sc-cream: #fbf6eb;
+  --sc-cream-deep: #eee4d2;
+  --sc-gold: #b28a4a;
+  --sc-gold-soft: #d9bd88;
   color: var(--sc-ink);
   background: var(--sc-bg);
-  font-family: "DM Sans", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Plus Jakarta Sans", DM Sans, Inter, system-ui, sans-serif;
   font-synthesis: none;
 }
 
@@ -1627,5 +1631,281 @@ textarea.form-control {
   .login-form-meta {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+
+/* Global cream luxury civic system */
+html, body, #root {
+  background: var(--sc-bg);
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% -5%, rgba(178, 138, 74, 0.11), transparent 25rem),
+    radial-gradient(circle at 92% 8%, rgba(47, 102, 84, 0.09), transparent 28rem),
+    linear-gradient(180deg, #f8f2e8 0%, var(--sc-bg) 42%, #f7f1e6 100%);
+  color: var(--sc-ink);
+  font-family: "Plus Jakarta Sans", DM Sans, Inter, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+body::selection {
+  background: rgba(178, 138, 74, 0.22);
+  color: var(--sc-ink);
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.section-heading h1,
+.section-heading h2,
+.public-hero h1,
+.contact-hero h1,
+.login-showcase h1,
+.login-form-heading h2 {
+  font-family: "Sora", "Manrope", sans-serif;
+  color: var(--sc-ink);
+}
+
+p, li, label, .form-text {
+  color: var(--sc-muted);
+}
+
+.text-muted {
+  color: var(--sc-muted) !important;
+}
+
+.bg-white,
+.public-card,
+.step-card,
+.auth-panel,
+.profile-panel,
+.dashboard-header,
+.admin-stat-card,
+.dashboard-card,
+.filter-panel,
+.chart-panel,
+.feedback-panel,
+.submitted-feedback,
+.table-panel,
+.tracking-result,
+.not-found-panel {
+  background: var(--sc-surface) !important;
+  border-color: var(--sc-border) !important;
+}
+
+.public-band {
+  background: linear-gradient(180deg, rgba(238, 228, 210, 0.72), rgba(251, 246, 235, 0.8));
+  border-color: rgba(178, 138, 74, 0.18);
+}
+
+.site-navbar {
+  background: rgba(252, 247, 237, 0.9) !important;
+  border-bottom: 1px solid rgba(91, 79, 60, 0.14);
+  box-shadow: 0 12px 34px rgba(68, 57, 39, 0.08) !important;
+}
+
+.site-navbar .navbar-brand {
+  color: var(--sc-ink) !important;
+}
+
+.site-navbar .nav-link,
+.site-navbar .navbar-text {
+  color: #58625b !important;
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: var(--sc-primary) !important;
+}
+
+.site-navbar .nav-link.active::after {
+  background: linear-gradient(90deg, var(--sc-gold), var(--sc-primary));
+}
+
+.site-navbar .brand-mark {
+  background: linear-gradient(135deg, var(--sc-primary), #6f967f);
+  box-shadow: 0 8px 24px rgba(47, 102, 84, 0.2);
+}
+
+.site-navbar .navbar-toggler {
+  border-color: rgba(91, 79, 60, 0.2);
+}
+
+.site-navbar .navbar-toggler-icon {
+  filter: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--sc-primary), #3f7965);
+  box-shadow: 0 10px 24px rgba(47, 102, 84, 0.18);
+}
+
+.btn-primary:hover,
+.site-navbar .btn-primary:hover {
+  background: linear-gradient(135deg, var(--sc-primary-dark), var(--sc-primary));
+  box-shadow: 0 14px 30px rgba(47, 102, 84, 0.24);
+}
+
+.btn-outline-primary {
+  color: var(--sc-primary);
+  border-color: rgba(47, 102, 84, 0.34);
+}
+
+.btn-outline-primary:hover {
+  background: var(--sc-primary);
+  border-color: var(--sc-primary);
+}
+
+.form-label {
+  color: #46534b;
+}
+
+.form-control,
+.form-select {
+  color: var(--sc-ink);
+  background-color: rgba(255, 252, 246, 0.94);
+  border-color: rgba(91, 79, 60, 0.18);
+}
+
+.form-control::placeholder {
+  color: #9a9a90;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(47, 102, 84, 0.5);
+  box-shadow: 0 0 0 4px rgba(47, 102, 84, 0.1);
+  background: #fffdf8;
+}
+
+.detail-box,
+.remark-box,
+.timeline-content {
+  background: rgba(251, 246, 235, 0.82);
+  border-color: rgba(91, 79, 60, 0.14);
+}
+
+.detail-box strong,
+.remark-box p,
+.table td {
+  color: var(--sc-ink);
+}
+
+.table thead th {
+  background: #eee4d2;
+  border-color: rgba(91, 79, 60, 0.14);
+  color: #5c665f;
+}
+
+.category-pill {
+  background: rgba(255, 251, 243, 0.82);
+  border-color: rgba(91, 79, 60, 0.15);
+  color: var(--sc-primary-dark);
+}
+
+.public-card svg {
+  color: var(--sc-primary);
+  background: #e9f0e9;
+}
+
+.step-card span {
+  background: linear-gradient(135deg, var(--sc-primary), var(--sc-gold));
+  box-shadow: 0 8px 22px rgba(47, 102, 84, 0.16);
+}
+
+.site-footer {
+  background:
+    radial-gradient(circle at 85% 0%, rgba(178, 138, 74, 0.13), transparent 20rem),
+    #24332d;
+  color: #f8f2e8;
+}
+
+.site-footer .text-muted,
+.site-footer p {
+  color: rgba(248, 242, 232, 0.66) !important;
+}
+
+.footer-links a {
+  color: rgba(248, 242, 232, 0.68);
+}
+
+.footer-links a:hover {
+  color: #fffaf0;
+}
+
+.tracking-box {
+  border-color: rgba(47, 102, 84, 0.2);
+  background: linear-gradient(135deg, #edf3ed, #f7efe0);
+}
+
+.tracking-box strong {
+  color: var(--sc-primary-dark);
+}
+
+.stats-strip {
+  background: #24332d;
+}
+
+.cta-panel {
+  background:
+    radial-gradient(circle at 88% 20%, rgba(217, 189, 136, 0.22), transparent 15rem),
+    linear-gradient(135deg, #2f6654, #6f8e78);
+}
+
+.public-hero,
+.hero-section {
+  background:
+    linear-gradient(120deg, rgba(35, 48, 42, 0.95), rgba(47, 102, 84, 0.88) 56%, rgba(96, 119, 93, 0.78)),
+    url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1800&q=85");
+}
+
+.public-hero::before {
+  background:
+    linear-gradient(90deg, rgba(178, 138, 74, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 25%, rgba(217, 189, 136, 0.18), transparent 20rem);
+}
+
+.login-page {
+  background:
+    radial-gradient(circle at 5% 20%, rgba(178, 138, 74, 0.1), transparent 24rem),
+    radial-gradient(circle at 95% 80%, rgba(47, 102, 84, 0.1), transparent 25rem),
+    var(--sc-bg);
+}
+
+.login-form-card {
+  background: rgba(255, 251, 243, 0.96);
+}
+
+.login-kicker {
+  color: #d9bd88;
+  border-color: rgba(217, 189, 136, 0.24);
+  background: rgba(178, 138, 74, 0.1);
+}
+
+.login-password-toggle:hover {
+  color: var(--sc-primary);
+  background: #eef3ec;
+}
+
+.login-register-link {
+  color: var(--sc-primary-dark);
+  border-color: rgba(91, 79, 60, 0.16);
+  background: #fffaf0;
+}
+
+.login-register-link:hover {
+  border-color: rgba(47, 102, 84, 0.28);
+  color: var(--sc-primary);
+  background: #f4eee2;
+}
+
+@media (max-width: 991.98px) {
+  .site-navbar .navbar-collapse {
+    background: rgba(251, 246, 235, 0.98);
+    border-radius: 16px;
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    box-shadow: 0 18px 40px rgba(68, 57, 39, 0.1);
   }
 }
