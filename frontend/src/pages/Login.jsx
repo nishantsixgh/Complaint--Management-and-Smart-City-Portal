@@ -1,25 +1,21 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Mail, LockKeyhole, Eye, EyeOff, ShieldCheck, ArrowRight, MapPin, CheckCircle2 } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: ""
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [alert, setAlert] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const redirectTo = location.state?.from?.pathname || "/dashboard";
 
   const handleChange = (event) => {
-    setFormData((current) => ({
-      ...current,
-      [event.target.name]: event.target.value
-    }));
+    setFormData((current) => ({ ...current, [event.target.name]: event.target.value }));
   };
 
   const handleSubmit = async (event) => {
@@ -34,7 +30,7 @@ const Login = () => {
     } catch (error) {
       setAlert({
         type: "danger",
-        message: error.response?.data?.message || "Login failed. Please try again."
+        message: error.response?.data?.message || "Login failed. Please check your email and password."
       });
     } finally {
       setSubmitting(false);
@@ -42,56 +38,107 @@ const Login = () => {
   };
 
   return (
-    <section className="auth-section py-5">
+    <section className="login-page">
       <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-sm-10 col-md-8 col-lg-5">
-            <div className="auth-panel bg-white p-4 p-md-5">
-              <h1 className="h3 fw-semibold mb-2">Login</h1>
-              <p className="text-muted mb-4">Access your smart city complaint portal account.</p>
+        <div className="login-shell">
+          <div className="login-showcase">
+            <div className="login-showcase-content">
+              <span className="login-kicker"><ShieldCheck size={15} /> Secure citizen access</span>
+              <h1>One portal for a better city.</h1>
+              <p>
+                Sign in to report civic issues, follow complaint progress, and stay connected
+                with the services that matter to your neighbourhood.
+              </p>
 
-              {alert && <div className={`alert alert-${alert.type}`}>{alert.message}</div>}
+              <div className="login-benefits">
+                <div><CheckCircle2 size={18} /><span>Submit and manage complaints</span></div>
+                <div><CheckCircle2 size={18} /><span>Track updates in one place</span></div>
+                <div><CheckCircle2 size={18} /><span>Protected role-based access</span></div>
+              </div>
 
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label" htmlFor="email">
-                    Email address
-                  </label>
+              <div className="login-location">
+                <MapPin size={17} />
+                <span>Smart City Citizen Portal</span>
+              </div>
+            </div>
+            <div className="login-orbit login-orbit-one" />
+            <div className="login-orbit login-orbit-two" />
+          </div>
+
+          <div className="login-form-card">
+            <div className="login-form-heading">
+              <span className="login-form-label">Welcome back</span>
+              <h2>Sign in to continue</h2>
+              <p>Use your registered email and password to access your account.</p>
+            </div>
+
+            {alert && (
+              <div className={`login-alert alert alert-${alert.type}`} role="alert">
+                {alert.message}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="login-form">
+              <div className="login-field">
+                <label className="form-label" htmlFor="login-email">Email address</label>
+                <div className="login-input-wrap">
+                  <Mail size={18} aria-hidden="true" />
                   <input
                     className="form-control"
-                    id="email"
+                    id="login-email"
                     name="email"
                     type="email"
+                    placeholder="you@example.com"
+                    autoComplete="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
                   />
                 </div>
+              </div>
 
-                <div className="mb-4">
-                  <label className="form-label" htmlFor="password">
-                    Password
-                  </label>
+              <div className="login-field">
+                <label className="form-label" htmlFor="login-password">Password</label>
+                <div className="login-input-wrap">
+                  <LockKeyhole size={18} aria-hidden="true" />
                   <input
                     className="form-control"
-                    id="password"
+                    id="login-password"
                     name="password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
+                    autoComplete="current-password"
                     value={formData.password}
                     onChange={handleChange}
                     required
                   />
+                  <button
+                    type="button"
+                    className="login-password-toggle"
+                    onClick={() => setShowPassword((current) => !current)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
                 </div>
+              </div>
 
-                <button className="btn btn-primary w-100" type="submit" disabled={submitting}>
-                  {submitting ? "Logging in..." : "Login"}
-                </button>
-              </form>
+              <div className="login-form-meta">
+                <span><ShieldCheck size={15} /> Secure sign-in</span>
+                <span>Citizen account</span>
+              </div>
 
-              <p className="text-muted text-center mt-4 mb-0">
-                New here? <Link to="/register">Create an account</Link>
-              </p>
-            </div>
+              <button className="btn btn-primary login-submit" type="submit" disabled={submitting}>
+                <span>{submitting ? "Signing you in..." : "Sign in"}</span>
+                {!submitting && <ArrowRight size={18} />}
+              </button>
+            </form>
+
+            <div className="login-divider"><span>New to the portal?</span></div>
+
+            <Link to="/register" className="login-register-link">
+              Create a citizen account <ArrowRight size={17} />
+            </Link>
           </div>
         </div>
       </div>
