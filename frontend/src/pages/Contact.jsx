@@ -1,7 +1,7 @@
 import { ArrowUpRight, CheckCircle2, Clock3, Mail, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 
 const contactInfo=[
- {Icon:MapPin,title:"Visit",value:< >Sandip University<br/>Sijoul, Madhubani<br/>Bihar - 847235</>},
+ {Icon:MapPin,title:"Visit",value:<>Sandip University<br/>Sijoul, Madhubani<br/>Bihar - 847235</>},
  {Icon:Phone,title:"Call",value:<><a href="tel:+916200576221">+91 6200576221</a><br/><a href="tel:+917320893482">+91 7320893482</a></>},
  {Icon:Mail,title:"Email",value:<><a href="mailto:nishant805180@gmail.com">nishant805180@gmail.com</a><br/><a href="mailto:nishant620057@gmail.com">nishant620057@gmail.com</a></>}
 ];
